@@ -1,5 +1,6 @@
 import styles from './Feedbacks.module.scss';
 import { useState } from 'react';
+import { Feedback } from '../Feedback/Feedback';
 
 function Feedbacks({ linkText, editText }) {
     const [feedbacks, setFeedbacks] = useState(JSON.parse(localStorage.getItem('feedbacks')) || []);
@@ -39,9 +40,11 @@ function Feedbacks({ linkText, editText }) {
                     <button type="submit">Add</button>
                 </form>
             </div>
-            {feedbacks.map((item, idx) => <div key={idx}>
-                {item.name} {item.feedback}
-            </div>)}
+            {feedbacks.map((item, idx) => {
+                const {name, feedback} = item;
+                return <div key={idx}>                
+                <Feedback name={name} feedback={feedback} />
+            </div>})}
         </>
     );
 }
