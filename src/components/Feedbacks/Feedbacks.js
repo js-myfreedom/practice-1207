@@ -1,6 +1,7 @@
 import styles from './Feedbacks.module.scss';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Feedback } from '../Feedback/Feedback';
+import { ThemeContext } from '../../utils/ThemeContext';
 
 function Feedbacks({ linkText, editText }) {
     const [feedbacks, setFeedbacks] = useState(JSON.parse(localStorage.getItem('feedbacks')) || []);
@@ -18,9 +19,11 @@ function Feedbacks({ linkText, editText }) {
         evt.target.elements.feedback.value = '';
     }
 
+    const theme = useContext(ThemeContext);
 
     return (
-        <>
+        <div className={`${styles.wrapper} ${styles[theme]}`}>
+            theme: {theme}
             <h2 style={{ textAlign: 'center' }}>Feedbacks</h2>
             <div style={{
                 width: "250px",
@@ -45,7 +48,7 @@ function Feedbacks({ linkText, editText }) {
                 return <div key={idx}>                
                 <Feedback name={name} feedback={feedback} />
             </div>})}
-        </>
+        </div>
     );
 }
 

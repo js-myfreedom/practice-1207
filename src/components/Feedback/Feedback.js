@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { ThemeContext } from '../../utils/ThemeContext';
 
 export function Feedback({name = 222, feedback}) {
-    return <>{name} :: {feedback}</>
+    const theme = useContext(ThemeContext);
+    
+    return <>
+    {name} :: {feedback} :: {theme}
+    </>
 }
 
 Feedback.defaultProps = {
