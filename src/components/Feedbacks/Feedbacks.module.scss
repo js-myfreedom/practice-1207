@@ -7,3 +7,19 @@ form.addFeedbackForm {
       width: 100%;
     }
   }
+
+  .wrapper {
+    font-size: 16px;
+
+    &.dark {
+      color: white;
+      background: black;
+    }
+  
+    &.light {
+      color: black;
+      background: white;
+    }
+  }
+
+ 
