@@ -1,0 +1,13 @@
+GET https://todos-7be86-default-rtdb.firebaseio.com/todos.json HTTP/1.1
+
+###
+
+POST https://todos-7be86-default-rtdb.firebaseio.com/todos.json HTTP/1.1
+content-type: application/json
+
+{
+    "completed": false,
+    "id": "202",
+    "title": "stand up",
+    "useId": 11
+}
