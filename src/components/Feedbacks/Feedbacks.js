@@ -1,12 +1,10 @@
 import styles from './Feedbacks.module.scss';
-import { useState, useContext, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import { Feedback } from '../Feedback/Feedback';
 import { ThemeContext } from '../../utils/ThemeContext';
-import { get } from '../../data/todos';
 
-function Feedbacks({ linkText, editText }) {
+function Feedbacks() {
     const [feedbacks, setFeedbacks] = useState(JSON.parse(localStorage.getItem('feedbacks')) || []);
-    const [data, setData] = useState({});
     const onSubmitHandler = (evt) => {
         evt.preventDefault();
         // const name = evt.target.elements.name.value;
@@ -23,18 +21,8 @@ function Feedbacks({ linkText, editText }) {
 
     const theme = useContext(ThemeContext);
 
-    useEffect(() => {
-        get().then(serverData => {
-            setData(serverData);
-        });
-    }, []);
-
     return (
         <div className={`${styles.wrapper} ${styles[theme]}`}>
-            userId: {data.userId}
-            <br/>
-            title: {data.title}
-            <br/>
             theme: {theme}
             <h2 style={{ textAlign: 'center' }}>Feedbacks</h2>
             <div style={{
@@ -56,10 +44,11 @@ function Feedbacks({ linkText, editText }) {
                 </form>
             </div>
             {feedbacks.map((item, idx) => {
-                const {name, feedback} = item;
-                return <div key={idx}>                
-                <Feedback name={name} feedback={feedback} />
-            </div>})}
+                const { name, feedback } = item;
+                return <div key={idx}>
+                    <Feedback name={name} feedback={feedback} />
+                </div>
+            })}
         </div>
     );
 }

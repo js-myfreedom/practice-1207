@@ -10,13 +10,16 @@ import {
 import { ThemeContext } from '../../utils/ThemeContext';
 import { useState } from 'react';
 import config from '../../utils/config';
+import Todos from "../Todos/Todos";
 
 function App() {
 
   const [theme, setTheme] = useState(config.defaultTheme);
 
-  const changeTheme = (value) => {
-    setTheme(value);
+  const changeTheme = (evt) => {
+    evt.preventDefault();
+    const theme = evt.target.dataset.theme;
+    setTheme(theme);
   }
 
   document.body.className = theme;
@@ -33,18 +36,24 @@ function App() {
               <li>
                 <Link to="/feedbacks">Feedbacks</Link>
               </li>
+              <li>
+                <Link to="/todos">Todos</Link>
+              </li>
             </ul>
           </nav>
-          <Link onClick={() => changeTheme('light')}>Light</Link>
-          <br/>
-          <Link onClick={() => changeTheme('dark')}>Dark</Link>
+          <Link to="" data-theme="light" onClick={changeTheme}>Light</Link>
+          <br />
+          <Link to="" data-theme="dark" onClick={changeTheme}>Dark</Link>
 
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
           <Switch>
             <Route path="/feedbacks">
               <Feedbacks />
-            </Route>          
+            </Route>
+            <Route path="/todos">
+              <Todos />
+            </Route>
             <Route path="/">
               <Home />
             </Route>
