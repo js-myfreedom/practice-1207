@@ -11,6 +11,7 @@ import { ThemeContext } from '../../utils/ThemeContext';
 import { useState } from 'react';
 import config from '../../utils/config';
 import Todos from "../Todos/Todos";
+import Counter from "../Counter/Counter";
 
 function App() {
 
@@ -39,6 +40,9 @@ function App() {
               <li>
                 <Link to="/todos">Todos</Link>
               </li>
+              <li>
+                <Link to="/counter">Counter</Link>
+              </li>
             </ul>
           </nav>
           <Link to="" data-theme="light" onClick={changeTheme}>Light</Link>
@@ -53,6 +57,9 @@ function App() {
             </Route>
             <Route path="/todos">
               <Todos />
+            </Route>
+            <Route path="/counter">
+              <Counter />
             </Route>
             <Route path="/">
               <Home />
