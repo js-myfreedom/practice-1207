@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import CounterButtons from '../CounterButtons/CounterButtons';
 import { Provider } from 'react-redux';
-import actionTypes from '../../redux/actionTypes';
 import store from '../../redux/store';
 import { initialState } from '../../redux/reducers';
+import { decrement, decrement1, increment } from '../../redux/actionCreators';
 
 export default function Counter() {
 
@@ -18,13 +18,13 @@ export default function Counter() {
                 setCounter(state.counter);
             });
 
-            store.dispatch({ type: actionTypes.INCREMENT });
+            store.dispatch(increment());
             // 1
-            store.dispatch({ type: actionTypes.INCREMENT });
+            store.dispatch(increment());
             // 2
-            store.dispatch({ type: actionTypes.DECREMENT });
+            store.dispatch(decrement());
             // 1
-            store.dispatch({ type: actionTypes.DECREMENT1 });
+            store.dispatch(decrement1());
             // 1
 
             setStoreSubsribed(true);
@@ -33,7 +33,7 @@ export default function Counter() {
     }, [isStoreSubsribed]);
 
     const onButtonClick = () => {
-        store.dispatch({ type: 'INCREMENT' });
+        store.dispatch(increment());
     }
 
     return <>

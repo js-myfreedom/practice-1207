@@ -1,20 +1,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import actionTypes from '../../redux/actionTypes';
+import { incrementAge, incrementAsync } from '../../redux/actionCreators';
 
 const CounterButtons = () => {
     const dispatch = useDispatch();
     const onButtonClick = (count) => {
-        let action;
-        if (count) {
-            action = { type: actionTypes.INCREMENT, payload: count };
-        } else {
-            action = { type: actionTypes.INCREMENT };
-        }
-        dispatch(action);
+        dispatch(incrementAsync(count));
     }
     const onAgeButtonClick = () => {
-        dispatch({ type: actionTypes.INCREMENT_AGE });
+        dispatch(incrementAge());
     }
     const counter = useSelector(state => state.counter);
     const age = useSelector(state => state.age);
