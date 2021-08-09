@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { incrementAge, incrementAsync } from '../../redux/actionCreators';
+import { incrementAge, incrementAsync } from '../../../redux/actionCreators';
 
 const CounterButtons = () => {
     const dispatch = useDispatch();
