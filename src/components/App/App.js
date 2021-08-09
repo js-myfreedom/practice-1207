@@ -12,6 +12,8 @@ import { useState } from 'react';
 import config from '../../utils/config';
 import Todos from "../Todos/Todos";
 import Counter from "../Counter/Counter";
+import CounterViaContext from "../CounterViaContext/CounterViaContext";
+import CounterViaUseState from "../CounterViaUseState/CounterViaUseState";
 
 function App() {
 
@@ -43,6 +45,12 @@ function App() {
               <li>
                 <Link to="/counter">Counter</Link>
               </li>
+              <li>
+                <Link to="/counterViaContext">Counter Via Context</Link>
+              </li>
+              <li>
+                <Link to="/counterViaUseState">Counter Via useState</Link>
+              </li>
             </ul>
           </nav>
           <Link to="" data-theme="light" onClick={changeTheme}>Light</Link>
@@ -60,6 +68,12 @@ function App() {
             </Route>
             <Route path="/counter">
               <Counter />
+            </Route>
+            <Route path="/counterViaContext">
+              <CounterViaContext />
+            </Route>
+            <Route path="/counterViaUseState">
+              <CounterViaUseState />
             </Route>
             <Route path="/">
               <Home />

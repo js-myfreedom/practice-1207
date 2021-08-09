@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import CounterButtons from '../CounterButtons/CounterButtons';
+import CounterButtons from './CounterButtons/CounterButtons';
 import { Provider } from 'react-redux';
 import store from '../../redux/store';
 import { initialState } from '../../redux/reducers';
