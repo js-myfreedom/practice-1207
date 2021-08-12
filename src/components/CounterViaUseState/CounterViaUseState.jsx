@@ -18,8 +18,20 @@ export default function CounterViaUseState() {
         setState({ ...state, age: state.age + 1 });
     }
 
+    const multiply = ({ multiplier, seconds }) => {
+        setTimeout(() => {
+            setState({ ...state, counter: state.counter * multiplier });
+        }, seconds * 1000);
+    }
+
     const onButtonClick = () => {
         increment();
+    }
+
+    const incrementAsync = (count) => {
+        setTimeout(() => {
+            increment(count);
+        }, 1000);
     }
 
     return <>
@@ -28,6 +40,6 @@ export default function CounterViaUseState() {
         <button onClick={onButtonClick}>Increment</button>
         <br />
         <br />
-        <CounterButtons {...state} increment={increment} incrementAge={incrementAge} />
+        <CounterButtons {...state} incrementAsync={incrementAsync} incrementAge={incrementAge} multiply={multiply} />
     </>
 }
