@@ -1,6 +1,8 @@
-import React, { useState, useCallback } from 'react';
+import React, { useReducer } from 'react';
 import CounterButtons from './CounterButtons/CounterButtons';
 import CounterContext from './CounterContext';
+import { counterReducer } from '../../redux/reducers';
+import * as actionCreators from '../../redux/actionCreators';
 
 const initialState = {
     counter: 0,
@@ -8,17 +10,12 @@ const initialState = {
 };
 
 export default function CounterViaContext() {
-    const [state, setState] = useState(initialState);
-    // const [isStoreSubsribed, setStoreSubsribed] = useState(false);
+    const [state, dispatch] = useReducer(counterReducer, initialState)
     const { counter } = state;
 
-    const increment = useCallback((count) => {
-        setState({ ...state, counter: state.counter + (count || 1) });
-    }, [state]);
-
-    const incrementAge = () => {
-        setState({ ...state, age: state.age + 1 });
-    }
+    const increment = (count) => {
+        dispatch(actionCreators.increment(count));
+    };
 
     const onButtonClick = () => {
         increment();
@@ -28,18 +25,15 @@ export default function CounterViaContext() {
     //     increment(7);
     //     increment(7);
     //     increment(7);
-
-    //     setStoreSubsribed(true);
-
     // }, [increment]);
 
     return <>
-        <br />123
+        <br />
         counter in counter.jsx: {counter}
         <button onClick={onButtonClick}>Increment</button>
         <br />
         <br />
-        <CounterContext.Provider value={{ ...state, increment, incrementAge }}>
+        <CounterContext.Provider value={{ ...state, dispatch }}>
             <CounterButtons />
         </CounterContext.Provider>
     </>

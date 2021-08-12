@@ -18,6 +18,8 @@ export function counterReducer(state = initialState, action) {
             return { ...state, age: state.age + 1 };
         case actionTypes.DECREMENT:
             return { ...state, counter: state.counter - 1 };
+        case actionTypes.MULTIPLY:
+            return { ...state, counter: action.payload };
         default:
             return { ...state, counter: state.counter };
     }
