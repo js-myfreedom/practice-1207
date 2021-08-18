@@ -43,7 +43,7 @@ class CounterButtons extends React.Component {
         <button onClick={() => { this.onButtonClick(2); }}>Increment + 2</button>
         <br />
         <br />
-        Multiplier: <input type="text" onChange={this.onMultiplierChange} value={this.state.multiplier}></input>{' '}
+        Multiplier: <input type="text" onChange={this.onMultiplierChange} value={this.state.multiplier || ""}></input>{' '}
         <br />
         Seconds: <input type="text" onChange={this.onSecondsChange} value={this.state.seconds || ""}></input>
         <br />
