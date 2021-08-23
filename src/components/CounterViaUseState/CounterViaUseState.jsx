@@ -6,7 +6,7 @@ const initialState = {
     age: 25,
 };
 
-export default function CounterViaUseState() {
+export default function CounterViaUseState({theme}) {
     const [state, setState] = useState(initialState);
     const { counter } = state;
 
@@ -35,6 +35,8 @@ export default function CounterViaUseState() {
     }
 
     return <>
+    <br/>
+    theme: {theme}
         <br />
         counter in counter.jsx: {counter}
         <button onClick={onButtonClick}>Increment</button>
