@@ -5,7 +5,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   NavLink
 } from "react-router-dom";
 import { ThemeContext } from '../../utils/ThemeContext';
@@ -15,8 +14,8 @@ import Todos from "../Todos/Todos";
 import Counter from "../Counter/Counter";
 import CounterViaContext from "../CounterViaContext/CounterViaContext";
 import CounterViaUseState from "../CounterViaUseState/CounterViaUseState";
-import './App.scss';
-import CounterViaUseStateAndClasses from '../CounterViaUseStateAndClasses/CounterViaUseStateAndClasses';
+import CounterViaUseStateAndClasses from "../CounterViaUseStateAndClasses/CounterViaUseStateAndClasses";
+import styles from './App.module.scss';
 
 function App() {
 
@@ -37,31 +36,31 @@ function App() {
           <nav>
             <ul className="myLinks">
               <li>
-                <NavLink exact to="/">Home</NavLink>
+                <NavLink activeClassName={styles.selectedNavItem} exact to="/">Home</NavLink>
               </li>
               <li>
-                <NavLink to="/feedbacks">Feedbacks</NavLink>
+                <NavLink activeClassName={styles.selectedNavItem} to="/feedbacks">Feedbacks</NavLink>
               </li>
               <li>
-                <NavLink to="/todos">Todos</NavLink>
+                <NavLink activeClassName={styles.selectedNavItem} to="/todos">Todos</NavLink>
               </li>
               <li>
-                <NavLink to="/counter">Counter</NavLink>
+                <NavLink activeClassName={styles.selectedNavItem} to="/counter">Counter</NavLink>
               </li>
               <li>
-                <NavLink to="/counterViaContext">Counter Via Context</NavLink>
+                <NavLink activeClassName={styles.selectedNavItem} to="/counterViaContext">Counter Via Context</NavLink>
               </li>
               <li>
-                <NavLink to="/counterViaUseState">Counter Via useState</NavLink>
+                <NavLink activeClassName={styles.selectedNavItem} to="/counterViaUseState">Counter Via useState</NavLink>
               </li>
               <li>
-                <NavLink to="/counterViaUseStateAndClasses">Counter Via useState and Classes</NavLink>
+                <NavLink activeClassName={styles.selectedNavItem} to="/counterViaUseStateAndClasses">Counter Via useState and Classes</NavLink>
               </li>
             </ul>
           </nav>
-          <Link to="" data-theme="light" onClick={changeTheme}>Light</Link>
+          <NavLink to="" data-theme="light" onClick={changeTheme}>Light</NavLink>
           <br />
-          <Link to="" data-theme="dark" onClick={changeTheme}>Dark</Link>
+          <NavLink to="" data-theme="dark" onClick={changeTheme}>Dark</NavLink>
 
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
@@ -80,6 +79,9 @@ function App() {
             </Route>
             <Route path="/counterViaUseState">
               <CounterViaUseState theme={theme} />
+            </Route>
+            <Route path="/counterViaUseStateAndClasses">
+              <CounterViaUseStateAndClasses />
             </Route>
             <Route path="/counterViaUseStateAndClasses">
               <CounterViaUseStateAndClasses />
