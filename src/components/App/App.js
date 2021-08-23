@@ -5,7 +5,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  NavLink
 } from "react-router-dom";
 import { ThemeContext } from '../../utils/ThemeContext';
 import { useState } from 'react';
@@ -14,6 +15,7 @@ import Todos from "../Todos/Todos";
 import Counter from "../Counter/Counter";
 import CounterViaContext from "../CounterViaContext/CounterViaContext";
 import CounterViaUseState from "../CounterViaUseState/CounterViaUseState";
+import './App.scss';
 
 function App() {
 
@@ -32,24 +34,24 @@ function App() {
       <Router>
         <div>
           <nav>
-            <ul>
+            <ul className="myLinks">
               <li>
-                <Link to="/">Home</Link>
+                <NavLink exact to="/">Home</NavLink>
               </li>
               <li>
-                <Link to="/feedbacks">Feedbacks</Link>
+                <NavLink to="/feedbacks">Feedbacks</NavLink>
               </li>
               <li>
-                <Link to="/todos">Todos</Link>
+                <NavLink to="/todos">Todos</NavLink>
               </li>
               <li>
-                <Link to="/counter">Counter</Link>
+                <NavLink to="/counter">Counter</NavLink>
               </li>
               <li>
-                <Link to="/counterViaContext">Counter Via Context</Link>
+                <NavLink to="/counterViaContext">Counter Via Context</NavLink>
               </li>
               <li>
-                <Link to="/counterViaUseState">Counter Via useState</Link>
+                <NavLink to="/counterViaUseState">Counter Via useState</NavLink>
               </li>
             </ul>
           </nav>
@@ -73,7 +75,7 @@ function App() {
               <CounterViaContext />
             </Route>
             <Route path="/counterViaUseState">
-              <CounterViaUseState />
+              <CounterViaUseState theme={theme} />
             </Route>
             <Route path="/">
               <Home />
