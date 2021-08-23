@@ -16,6 +16,7 @@ import Counter from "../Counter/Counter";
 import CounterViaContext from "../CounterViaContext/CounterViaContext";
 import CounterViaUseState from "../CounterViaUseState/CounterViaUseState";
 import './App.scss';
+import CounterViaUseStateAndClasses from '../CounterViaUseStateAndClasses/CounterViaUseStateAndClasses';
 
 function App() {
 
@@ -53,6 +54,9 @@ function App() {
               <li>
                 <NavLink to="/counterViaUseState">Counter Via useState</NavLink>
               </li>
+              <li>
+                <NavLink to="/counterViaUseStateAndClasses">Counter Via useState and Classes</NavLink>
+              </li>
             </ul>
           </nav>
           <Link to="" data-theme="light" onClick={changeTheme}>Light</Link>
@@ -76,6 +80,9 @@ function App() {
             </Route>
             <Route path="/counterViaUseState">
               <CounterViaUseState theme={theme} />
+            </Route>
+            <Route path="/counterViaUseStateAndClasses">
+              <CounterViaUseStateAndClasses />
             </Route>
             <Route path="/">
               <Home />
