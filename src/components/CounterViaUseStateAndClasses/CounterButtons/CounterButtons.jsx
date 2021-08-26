@@ -5,7 +5,7 @@ class CounterButtons extends React.Component {
         super(props);
         this.state = {
             seconds: 0,
-            multiply: 0,
+            multiply: 4,
         };
         this.onAgeButtonClick = this.onAgeButtonClick.bind(this);
         this.onMultiplyButtonClick = this.onMultiplyButtonClick.bind(this);
