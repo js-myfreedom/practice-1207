@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { get, getAll, add } from '../../data/todos';
 
 const Todos = () => {
@@ -49,7 +50,7 @@ const Todos = () => {
         TODOS:
         {todos.map((todo, idx) =>
             <div key={idx}>
-                {todo.title}
+                {todo.title} <Link to={`/todos/${todo.uniqueId}`}>Edit</Link>
             </div>)}
     </div>;
 }

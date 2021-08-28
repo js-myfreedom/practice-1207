@@ -11,11 +11,13 @@ import { ThemeContext } from '../../utils/ThemeContext';
 import { useState } from 'react';
 import config from '../../utils/config';
 import Todos from "../Todos/Todos";
+import Todo from "../Todo/Todo";
 import Counter from "../Counter/Counter";
 import CounterViaContext from "../CounterViaContext/CounterViaContext";
 import CounterViaUseState from "../CounterViaUseState/CounterViaUseState";
 import CounterViaUseStateAndClasses from "../CounterViaUseStateAndClasses/CounterViaUseStateAndClasses";
 import styles from './App.module.scss';
+import { getById } from '../../data/todos'
 
 function App() {
 
@@ -68,8 +70,11 @@ function App() {
             <Route path="/feedbacks">
               <Feedbacks />
             </Route>
-            <Route path="/todos">
+            <Route exact path="/todos">
               <Todos />
+            </Route>
+            <Route path="/todos/:todo">
+              <Todo getById={getById} />
             </Route>
             <Route path="/counter">
               <Counter />
@@ -79,9 +84,6 @@ function App() {
             </Route>
             <Route path="/counterViaUseState">
               <CounterViaUseState theme={theme} />
-            </Route>
-            <Route path="/counterViaUseStateAndClasses">
-              <CounterViaUseStateAndClasses />
             </Route>
             <Route path="/counterViaUseStateAndClasses">
               <CounterViaUseStateAndClasses />
